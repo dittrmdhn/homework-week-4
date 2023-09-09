@@ -130,6 +130,25 @@ const findMaxCategory = () => {
   return `Max terbesar ada pada array ${maxCategory} yaitu ${maxGreater}`;
 };
 
+const findGreaterTotal = () => {
+  const averageEven = totalEvenNumbers(evenNumbers);
+  const averageOdd = totalOddNumbers(oddNumbers);
+
+  let totalGreater;
+  let averageCategory;
+  if (averageEven > averageOdd) {
+    totalGreater = averageEven;
+    totalCategory = "Genap";
+  } else if (averageEven < averageOdd) {
+    totalGreater = averageOdd;
+    totalCategory = "Ganjil";
+  } else {
+    totalGreater = averageEven;
+    totalCategory = "Genap dan Ganjil";
+  }
+  return `Total terbesar ada pada array ${totalCategory} yaitu ${totalGreater}`;
+};
+
 const findGreaterAverage = () => {
   const averageEven = totalEvenNumbers(evenNumbers) / evenNumbers.length;
   const averageOdd = totalOddNumbers(oddNumbers) / oddNumbers.length;
@@ -189,4 +208,5 @@ console.log("==========Perbandingan=========");
 console.log(findMinCategory());
 console.log(findMaxCategory());
 console.log(findSameValues());
+console.log(findGreaterTotal());
 console.log(findGreaterAverage());
