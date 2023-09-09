@@ -1,30 +1,19 @@
 // Membuat array dengan 100 bilangan acak antara 1 dan 100
 const randomNumbers = [];
-let evenCount = 0;
-let oddCount = 0;
-
-while (evenCount < 50 || oddCount < 50) {
+for (let i = 0; i < 100; i++) {
   const randomNumber = Math.floor(Math.random() * 50) + 1;
-
-  if (randomNumber % 2 === 0 && evenCount < 50) {
-    randomNumbers.push(randomNumber);
-    evenCount++;
-  } else if (randomNumber % 2 !== 0 && oddCount < 50) {
-    randomNumbers.push(randomNumber);
-    oddCount++;
-  }
+  randomNumbers.push(randomNumber);
 }
 
 const evenNumbers = [];
 const oddNumbers = [];
-
-for (let i = 0; i < randomNumbers.length; i++) {
-  if (i % 2 === 0) {
-    evenNumbers.push(randomNumbers[i]);
+randomNumbers.forEach((number, index) => {
+  if (index % 2 === 0) {
+    evenNumbers.push(number);
   } else {
-    oddNumbers.push(randomNumbers[i]);
+    oddNumbers.push(number);
   }
-}
+});
 
 const minEvenNumbers = (numbers) => {
   let minEven = numbers[0];
@@ -135,7 +124,7 @@ const findGreaterTotal = () => {
   const averageOdd = totalOddNumbers(oddNumbers);
 
   let totalGreater;
-  let averageCategory;
+  let totalCategory;
   if (averageEven > averageOdd) {
     totalGreater = averageEven;
     totalCategory = "Genap";
