@@ -106,14 +106,14 @@ const findMinCategory = () => {
     minCategory = "Ganjil";
   } else {
     minGreater = minEven;
-    maxCategory = "Genap dan Ganjil";
+    minCategory = "Genap dan Ganjil";
   }
   return `Min terbesar ada pada array ${minCategory} yaitu ${minGreater}`;
 };
 
 const findMaxCategory = () => {
   const maxEven = maxEvenNumbers(evenNumbers);
-  const maxOdd = minEvenNumbers(oddNumbers);
+  const maxOdd = maxEvenNumbers(oddNumbers);
 
   let maxGreater;
   let maxCategory;
