@@ -3,13 +3,13 @@ const randomNumbers = [];
 let evenCount = 0;
 let oddCount = 0;
 
-while (evenCount < 5 || oddCount < 5) {
-  const randomNumber = Math.floor(Math.random() * 20) + 1;
+while (evenCount < 50 || oddCount < 50) {
+  const randomNumber = Math.floor(Math.random() * 50) + 1;
 
-  if (randomNumber % 2 === 0 && evenCount < 5) {
+  if (randomNumber % 2 === 0 && evenCount < 50) {
     randomNumbers.push(randomNumber);
     evenCount++;
-  } else if (randomNumber % 2 !== 0 && oddCount < 5) {
+  } else if (randomNumber % 2 !== 0 && oddCount < 50) {
     randomNumbers.push(randomNumber);
     oddCount++;
   }
