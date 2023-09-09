@@ -1,4 +1,3 @@
-// Membuat array dengan 100 bilangan acak antara 1 dan 100
 const randomNumbers = [];
 for (let i = 0; i < 100; i++) {
   const randomNumber = Math.floor(Math.random() * 50) + 1;
