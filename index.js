@@ -1,18 +1,24 @@
-const randomNumbers = [];
-for (let i = 0; i < 100; i++) {
-  const randomNumber = Math.floor(Math.random() * 50) + 1;
-  randomNumbers.push(randomNumber);
-}
-
-const evenNumbers = [];
-const oddNumbers = [];
-randomNumbers.forEach((number, index) => {
-  if (index % 2 === 0) {
-    evenNumbers.push(number);
-  } else {
-    oddNumbers.push(number);
+const generateRandomArray = () => {
+  const randomNumbers = [];
+  for (let i = 0; i < 100; i++) {
+    const randomNumber = Math.floor(Math.random() * 50) + 1;
+    randomNumbers.push(randomNumber);
   }
-});
+  return randomNumbers;
+};
+
+const separateArray = (randomNumbers) => {
+  const evenNumbers = [];
+  const oddNumbers = [];
+  randomNumbers.forEach((number, index) => {
+    if (index % 2 === 0) {
+      evenNumbers.push(number);
+    } else {
+      oddNumbers.push(number);
+    }
+  });
+  return { evenNumbers, oddNumbers };
+};
 
 const minEvenNumbers = (numbers) => {
   let minEven = numbers[0];
@@ -43,6 +49,7 @@ const totalEvenNumbers = (numbers) => {
 };
 
 const averageEvenNumbers = (numbers) => {
+  const totalEven = totalEvenNumbers(numbers);
   const averageEven = totalEven / numbers.length;
   return averageEven;
 };
@@ -76,13 +83,14 @@ const totalOddNumbers = (numbers) => {
 };
 
 const averageOddNumbers = (numbers) => {
+  const totalOdd = totalOddNumbers(numbers);
   const averageOdd = totalOdd / numbers.length;
   return averageOdd;
 };
 
 const findMinCategory = () => {
-  const minEven = minEvenNumbers(evenNumbers);
-  const minOdd = minOddNumbers(oddNumbers);
+  const minEven = minEvenNumbers(result.evenNumbers);
+  const minOdd = minOddNumbers(result.oddNumbers);
 
   let minGreater;
   let minCategory;
@@ -100,8 +108,8 @@ const findMinCategory = () => {
 };
 
 const findMaxCategory = () => {
-  const maxEven = maxEvenNumbers(evenNumbers);
-  const maxOdd = maxEvenNumbers(oddNumbers);
+  const maxEven = maxEvenNumbers(result.evenNumbers);
+  const maxOdd = maxEvenNumbers(result.oddNumbers);
 
   let maxGreater;
   let maxCategory;
@@ -119,8 +127,8 @@ const findMaxCategory = () => {
 };
 
 const findGreaterTotal = () => {
-  const averageEven = totalEvenNumbers(evenNumbers);
-  const averageOdd = totalOddNumbers(oddNumbers);
+  const averageEven = totalEvenNumbers(result.evenNumbers);
+  const averageOdd = totalOddNumbers(result.oddNumbers);
 
   let totalGreater;
   let totalCategory;
@@ -138,8 +146,8 @@ const findGreaterTotal = () => {
 };
 
 const findGreaterAverage = () => {
-  const averageEven = totalEvenNumbers(evenNumbers) / evenNumbers.length;
-  const averageOdd = totalOddNumbers(oddNumbers) / oddNumbers.length;
+  const averageEven = averageEvenNumbers(result.evenNumbers);
+  const averageOdd = averageOddNumbers(result.oddNumbers);
 
   let averageGreater;
   let averageCategory;
@@ -157,8 +165,8 @@ const findGreaterAverage = () => {
 };
 
 const findSameValues = () => {
-  const sameValue = evenNumbers.filter((evenNumbers) =>
-    oddNumbers.includes(evenNumbers)
+  const sameValue = result.evenNumbers.filter((evenNumbers) =>
+    result.oddNumbers.includes(evenNumbers)
   );
   const uniqueSameValue = [...new Set(sameValue)];
 
@@ -169,29 +177,23 @@ const findSameValues = () => {
     : "Tidak ada nilai yang sama antara genap dan ganjil";
 };
 
-const minEvenNumb = minEvenNumbers(evenNumbers);
-const maxEvenNumb = maxEvenNumbers(evenNumbers);
-const totalEven = totalEvenNumbers(evenNumbers);
-const averageEvenNumb = averageEvenNumbers(evenNumbers);
-const minOddNumb = minOddNumbers(oddNumbers);
-const maxOddNumb = maxOddNumbers(oddNumbers);
-const totalOdd = totalOddNumbers(oddNumbers);
-const averageOddNumb = averageOddNumbers(oddNumbers);
+const randomArray = generateRandomArray();
+const result = separateArray(randomArray);
 
 // Menampilkan hasil
-console.log("Bilangan acak:", randomNumbers);
-console.log("Array genap:", evenNumbers);
-console.log("Array ganjil:", oddNumbers);
+console.log("Bilangan acak:", randomArray);
+console.log("Array genap:", result.evenNumbers);
+console.log("Array ganjil:", result.oddNumbers);
 console.log("==========Array Genap==========");
-console.log("Min:", minEvenNumb);
-console.log("Max:", maxEvenNumb);
-console.log("Total:", totalEven);
-console.log("Rata-rata:", averageEvenNumb);
+console.log("Min:", minEvenNumbers(result.evenNumbers));
+console.log("Max:", maxEvenNumbers(result.evenNumbers));
+console.log("Total:", totalEvenNumbers(result.evenNumbers));
+console.log("Rata-rata:", averageEvenNumbers(result.evenNumbers));
 console.log("==========Array Ganjil==========");
-console.log("Min:", minOddNumb);
-console.log("Max:", maxOddNumb);
-console.log("Total:", totalOdd);
-console.log("Rata-rata:", averageOddNumb);
+console.log("Min:", minOddNumbers(result.oddNumbers));
+console.log("Max:", maxOddNumbers(result.oddNumbers));
+console.log("Total:", totalOddNumbers(result.oddNumbers));
+console.log("Rata-rata:", averageOddNumbers(result.oddNumbers));
 console.log("==========Perbandingan=========");
 console.log(findMinCategory());
 console.log(findMaxCategory());
